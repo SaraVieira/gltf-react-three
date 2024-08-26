@@ -44,7 +44,7 @@ const Result = () => {
         options: ['', 'sunset', 'dawn', 'night', 'warehouse', 'forest', 'apartment', 'studio', 'city', 'park', 'lobby'],
       },
     },
-    { collapsed: true },
+    { collapsed: true }
   )
 
   const [loading, sandboxId, error, sandboxCode] = useSandbox({
@@ -76,14 +76,14 @@ const Result = () => {
         loading: 'Loading',
         success: () => `Successfully copied`,
         error: (err) => err.toString(),
-      }),
+      })
     )
     temp['download zip'] = button(() =>
       toast.promise(download(), {
         loading: 'Loading',
         success: () => `Ready for download`,
         error: (err) => err.toString(),
-      }),
+      })
     )
 
     if (!isGlb(fileName) && !error) {

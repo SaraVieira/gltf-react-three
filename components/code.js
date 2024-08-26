@@ -1,11 +1,12 @@
 import  {Highlight, defaultProps, themes } from 'prism-react-renderer'
-
+import { useTheme } from 'next-themes'
 const Code = ({ children }) => {
+  const { theme } = useTheme()
   return (
-    <Highlight {...defaultProps} theme={themes.nightOwlLight} code={children} language="jsx">
+    <Highlight {...defaultProps} theme={theme==="light" ? themes.duotoneLight : themes.oneDark} code={children} language="jsx">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={`${className} whitespace-pre-wrap col-span-3 p-16 overflow-auto bg-white h-full`}
+          className={`${className} whitespace-pre-wrap col-span-3 p-16 overflow-auto h-full`}
           style={{
             ...style,
             fontSize: 12,
