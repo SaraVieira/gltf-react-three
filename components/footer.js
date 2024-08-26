@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes'
 import { GitHub, Logo } from './icons'
 import ThemeSwitch from './ThemeToggle'
-import ThemeSwitcher from './ThemeToggle'
 const Footer = () => {
   const { theme } = useTheme()
   return (
