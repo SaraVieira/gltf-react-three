@@ -8,15 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.1",
     "base64-arraybuffer": "^0.2.0",
     "clipboard-copy": "^4.0.1",
     "file-saver": "^2.0.5",
     "gltfjsx": "6.2.3",
+    "heroicons": "^2.1.5",
     "jszip": "^3.10.1",
     "leva": "^0.9.35",
     "next": "12.2.3",
+    "next-themes": "^0.3.0",
     "prism-react-renderer": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

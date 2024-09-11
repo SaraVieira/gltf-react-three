@@ -1,11 +1,14 @@
 import '../styles/globals.css'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
+import { ThemeProvider } from 'next-themes'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <TooltipProvider>
-      <Component {...pageProps} />
-    </TooltipProvider>
+    <ThemeProvider defaultTheme='light' attribute="class">
+      <TooltipProvider>
+        <Component {...pageProps} />
+      </TooltipProvider>
+    </ThemeProvider>
   )
 }
 

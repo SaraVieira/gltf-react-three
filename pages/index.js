@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { Suspense, useCallback} from 'react'
 import { Toaster } from 'react-hot-toast'
 import JSZip from 'jszip'
 import { encode as arrayBufferToBase64 } from 'base64-arraybuffer'
@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import useStore from '../utils/store'
 import { isGlb, isGltf, isZip } from '../utils/isExtension'
 import { loadFileAsArrayBuffer, stringToArrayBuffer } from '../utils/buffers'
+import { useTheme } from 'next-themes'
 
 const Loading = () => <p className="text-4xl font-bold">Loading ...</p>
 
@@ -20,6 +21,7 @@ const Result = dynamic(() => import('../components/result'), {
 
 export default function Home() {
   const buffers = useStore((state) => state.buffers)
+  const { theme } = useTheme()
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const buffers = new Map()
@@ -64,9 +66,13 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <main className="flex flex-col items-center justify-center flex-1" style={{ height: 'calc(100vh - 56px)' }}>
-        {buffers ? <Result /> : <FileDrop onDrop={onDrop} useSuzanne={useSuzanne} />}
+    <div
+      className={`flex flex-col items-center justify-center h-screen  ${theme === 'dark' ? 'dark' : 'light'}`} // Use theme classes
+    >
+      <main className="flex flex-col items-center justify-center flex-1">
+        <Suspense fallback={<div>Loading</div>}>
+          {buffers ? <Result /> : <FileDrop onDrop={onDrop} useSuzanne={useSuzanne} />}
+        </Suspense>
       </main>
       <SEO />
       <Toaster />
