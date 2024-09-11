@@ -4,11 +4,11 @@ import ThemeSwitch from './ThemeToggle'
 const Footer = () => {
   const { theme } = useTheme()
   return (
-    <footer className="p-4 flex items-center justify-between w-full z-10 relative">
+    <footer className="p-4 flex items-center justify-between w-full z-10 relative"> {/* Added background color */}
       <a href="https://pmnd.rs/" target="_blank" rel="noreferrer">
-        <Logo color={theme === 'light' ? 'black' : 'white'} />
+        <Logo color={theme === 'dark' ? 'white' : 'black'} />
       </a>
-      <p className="text-xs">
+      <p className="text-xs text-center"> {/* Centered text for better layout */}
         Made by{' '}
         <a
           className="underline hover:text-blue-600"
@@ -28,14 +28,13 @@ const Footer = () => {
           gltfjsx cli
         </a>
       </p>
-      <div className='flex gap-8'>
-        <a href="https://github.com/pmndrs/gltf-react-three/" target="_blank" rel="noreferrer">
-          <GitHub color={theme === 'light' ? 'black' : 'white'} />
-        </a>
-        <div className='flex'>
-        <p>Theme:</p>
-        <ThemeSwitch />
+      <div className='flex items-center gap-4'> {/* Adjusted gap and alignment */}
+        <div className='flex items-center'> {/* Centered items in the flex container */}
+          <ThemeSwitch />
         </div>
+        <a href="https://github.com/pmndrs/gltf-react-three/" target="_blank" rel="noreferrer">
+          <GitHub color={theme === 'dark' ? 'white' : 'black'} />
+        </a>
       </div>
     </footer>
   )

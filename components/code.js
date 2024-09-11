@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 const Code = ({ children }) => {
   const { theme } = useTheme()
   return (
-    <Highlight {...defaultProps} theme={theme==="light" ? themes.duotoneLight : themes.oneDark} code={children} language="jsx">
+    <Highlight {...defaultProps} theme={theme==="dark" ?  themes.oneDark : themes.nightOwlLight} code={children} language="jsx">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
           className={`${className} whitespace-pre-wrap col-span-3 p-16 overflow-auto h-full`}

@@ -1,4 +1,4 @@
-import { Suspense, useCallback } from 'react'
+import { Suspense, useCallback} from 'react'
 import { Toaster } from 'react-hot-toast'
 import JSZip from 'jszip'
 import { encode as arrayBufferToBase64 } from 'base64-arraybuffer'
@@ -22,6 +22,7 @@ const Result = dynamic(() => import('../components/result'), {
 export default function Home() {
   const buffers = useStore((state) => state.buffers)
   const { theme } = useTheme()
+
   const onDrop = useCallback(async (acceptedFiles) => {
     const buffers = new Map()
 
@@ -66,9 +67,9 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen transition-colors duration-1000 ease-in-out"
-      style={{ backgroundColor: `${theme === 'light' ? 'white' : '#181818'}` }}>
-      <main className="flex flex-col items-center justify-center flex-1" style={{ height: 'calc(100vh - 56px)' }}>
+      className={`flex flex-col items-center justify-center h-screen  ${theme === 'dark' ? 'dark' : 'light'}`} // Use theme classes
+    >
+      <main className="flex flex-col items-center justify-center flex-1">
         <Suspense fallback={<div>Loading</div>}>
           {buffers ? <Result /> : <FileDrop onDrop={onDrop} useSuzanne={useSuzanne} />}
         </Suspense>

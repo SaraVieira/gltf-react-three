@@ -1,18 +1,14 @@
 import '../styles/globals.css'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProvider } from 'next-themes'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="light"
-      forcedTheme={Component.theme || null}
-      enableSystem={true}>
+    <ThemeProvider defaultTheme='light' attribute="class">
       <TooltipProvider>
         <Component {...pageProps} />
       </TooltipProvider>
-    </NextThemesProvider>
+    </ThemeProvider>
   )
 }
 
